@@ -1,7 +1,7 @@
 package com.example.myapplication.obj;
 
 // 함수만 정의해서 쓰려면 Interface를 쓰고(implements BmiInterface), 상속받아서 쓰려면 abstract를 씀(extends Bmi)
-public class Person implements BmiInterface{
+public class Person extends Bmi {
     // Person은 Bmi를 상속받았기 때문에 Bmi에 정의해놓은 abstract 클래스도 무조건 상속받아줘야한다.
     // 사람한테 height, weight 등은 자원
 //    public int height, weight;

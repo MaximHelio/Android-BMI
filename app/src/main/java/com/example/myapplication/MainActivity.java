@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.myapplication.obj.BmiInterface;
 import com.example.myapplication.obj.Person;
 import com.example.myapplication.obj2.Man;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     // private : 현재 클래스(MainActivity) 안에서만 사용가능, 상속을 해도 못씀, 같은 패키지여도 못씀
     // 자바 클래스 변수 공개범위 (접근제한자)
     // private Person person = new Person();
-    private Man man = new Man(100);
+    private BmiInterface man = new Man(100, 50);
 
 
     @Override
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         weight = findViewById(R.id.weight);
         height = findViewById(R.id.height);
         name = findViewById(R.id.name);
+
+        // Man은 오브젝트 아니고 클래스인데, 모든 클래스는 오브젝트를 상속받기 때문에 이렇게 쓸 수 있음
+//        Object obj = new Man(100, 60);
+        String answer = man.outputText("ㄴㄴㄴㄴ", 123);
 
         // 사용하지 않은 변수는 회색으로 표시됨
         TextView result = findViewById(R.id.result);
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 Person person = new Person();
                 Log.d("initHeight", "initHeight : "+ height.getText().toString());
                 Log.d("initWeight", "initWeight : "+ weight.getText().toString());
+                // Person의 height / weight 주석 풀어줬더니 오류사라짐
                 person.height = Integer.parseInt(height.getText().toString());
                 person.weight = Integer.parseInt(weight.getText().toString());
                 person.name = name.getText().toString();

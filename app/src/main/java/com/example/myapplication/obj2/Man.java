@@ -1,8 +1,12 @@
 package com.example.myapplication.obj2;
 
+import com.example.myapplication.obj.Bmi;
+import com.example.myapplication.obj.BmiInterface;
 import com.example.myapplication.obj.Person;
+
+
 // 상속; Man의 bmi도 Person의 bmi도 double
-public class Man extends Person {
+public class Man extends Person implements BmiInterface {
 
     // 나만의 생성자 스타일을 가질 경우, 이 스타일을 다른 클래스에서도 따라줘야함 => 기본 생성자 구조는 사라짐
     public Man(int height, int weight){
@@ -11,9 +15,9 @@ public class Man extends Person {
         this.weight = weight;
 
     }
-    public Man(int height){
-        this.height = height;
-    }
+//    public Man(int height){
+//        this.height = height;
+//    }
 
     // 생성자
 //    public Man(){
@@ -33,14 +37,22 @@ public class Man extends Person {
 //        return result;
 //    }
 
-    // 오버로딩_ 함수의 파라미터가 달라짐
+    // 오버라이딩
     public double bmi(){
-        double result = super.bmi(this.height, weight);
+        double result = super.bmi();
         return result;
     }
 
+    // 오버로딩_ 함수의 파라미터가 달라짐
     public double bmi(int height){
-        double result = super.bmi(height, this.weight);
+        this.height = height;
+        double result = super.bmi();
         return result;
+    }
+
+    @Override
+    public String outputText(String name, double bmi) {
+        String text = name + "님은" + "bmi 결과값이"+ bmi + "입니다";
+        return text;
     }
 }
